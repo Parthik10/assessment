@@ -1,0 +1,178 @@
+/* ==========================================================================
+   SERVICES SECTION STYLES ("01 — Attract")
+   3/2/1 Responsive grid, interactive card lifts, animated icons, and WCAG focus.
+   ========================================================================== */
+
+.services-section {
+  background-color: var(--color-bg-page);
+  position: relative;
+}
+
+/* ==========================================================================
+   RESPONSIVE GRID
+   Mobile: 1 column | Tablet: 2 columns | Desktop: 3 columns
+   ========================================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   SERVICE CARD & HOVER STATES
+   - Lifts 4px
+   - Border turns accent
+   - Icon background fills
+   - Arrow slides right
+   ========================================================================== */
+.service-card {
+  position: relative;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal),
+              border-color var(--transition-normal);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Keyboard Accessible Focus */
+.service-card:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-primary);
+}
+
+/* Hover: Lift 4px & accent border */
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Top Row: Icon Container & Metric Pill */
+.service-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+/* Icon Box with background fill transition */
+.service-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-primary);
+  transition: background-color var(--transition-normal),
+              color var(--transition-normal),
+              border-color var(--transition-normal),
+              transform var(--transition-normal);
+}
+
+/* Hover: Icon background fills with primary tint */
+.service-card:hover .service-card__icon-wrap,
+.service-card:focus-visible .service-card__icon-wrap {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  transform: scale(1.05);
+}
+
+.service-card__badge {
+  font-size: 0.6875rem;
+}
+
+/* Card Typography */
+.service-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-main);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.01em;
+}
+
+.service-card__description {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  flex-grow: 1; /* Aligns all footers neatly */
+}
+
+/* Footer & Arrow Slide */
+.service-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.service-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.service-card__arrow {
+  transition: transform var(--transition-fast);
+}
+
+/* Hover: Arrow slides right */
+.service-card:hover .service-card__arrow,
+.service-card:focus-visible .service-card__arrow {
+  transform: translateX(5px);
+}
+
+/* Bottom CTA under grid */
+.services-bottom-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    transition: none !important;
+  }
+  .service-card:hover {
+    transform: none !important;
+  }
+  .service-card:hover .service-card__arrow {
+    transform: none !important;
+  }
+  .service-card:hover .service-card__icon-wrap {
+    transform: none !important;
+  }
+}
+

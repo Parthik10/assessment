@@ -1,0 +1,278 @@
+/* ==========================================================================
+   FOOTER COMPONENT STYLES
+   Deep neutral surface, 4/2/1 grid, back-to-top, and floating WhatsApp floater.
+   ========================================================================== */
+
+.footer-root {
+  background-color: #0B1120;
+  color: #94A3B8;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-main {
+  padding-block: var(--space-16) var(--space-12);
+}
+
+/* ==========================================================================
+   4 / 2 / 1 RESPONSIVE GRID
+   ========================================================================== */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 680px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: var(--space-10);
+  }
+}
+
+/* Column 1: Brand */
+.footer-col--brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.footer-logo__text {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+}
+
+.footer-logo__accent {
+  color: var(--color-primary);
+}
+
+.footer-description {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-body);
+  color: #94A3B8;
+  max-width: 320px;
+}
+
+/* Social Icon Buttons */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.footer-social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.footer-social-link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Columns 2 & 3: Nav Lists */
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-link {
+  font-size: var(--text-sm);
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+}
+
+/* Column 4: Contact */
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.footer-contact-icon {
+  color: var(--color-primary);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.footer-contact-address {
+  font-style: normal;
+}
+
+.footer-contact-link {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-link:hover {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   BOTTOM COPYRIGHT & LEGAL BAR
+   ========================================================================== */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-block: var(--space-6);
+  font-size: var(--text-xs);
+  color: #64748B;
+}
+
+.footer-bottom__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+@media (min-width: 680px) {
+  .footer-bottom__inner {
+    flex-direction: row;
+  }
+}
+
+.footer-bottom__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.footer-bottom__legal-link {
+  color: #64748B;
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom__legal-link:hover {
+  color: #CBD5E1;
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS (WhatsApp & Back-to-Top)
+   ========================================================================== */
+.floating-actions {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.floating-btn {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.floating-btn:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Back-To-Top Button */
+.floating-btn--top {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-bg-page);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-main);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+}
+
+.floating-btn--top.floating-btn--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-btn--top:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Floating WhatsApp Button */
+.floating-btn--whatsapp {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #25D366; /* Official WhatsApp green */
+  color: #FFFFFF;
+}
+
+.floating-btn--whatsapp:hover {
+  background-color: #20BA5A;
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-btn {
+    transition: none !important;
+  }
+}
+

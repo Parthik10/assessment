@@ -1,0 +1,179 @@
+/* ==========================================================================
+   FAQ ACCORDION STYLES
+   Accessible accordion using CSS grid-template-rows 0fr -> 1fr animation.
+   ========================================================================== */
+
+.faq-section {
+  background-color: var(--color-bg-page);
+  position: relative;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+/* Individual Accordion Card */
+.faq-item {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: var(--color-border-hover);
+}
+
+.faq-item--open {
+  border-color: var(--color-primary-border);
+  box-shadow: 0 4px 16px -2px rgba(14, 98, 228, 0.08);
+}
+
+.faq-item__heading {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Button Trigger */
+.faq-item__trigger {
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--transition-fast);
+}
+
+.faq-item__trigger:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.faq-item__trigger:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -2px;
+}
+
+.faq-item__question-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-main);
+  line-height: 1.4;
+}
+
+.faq-item--open .faq-item__question-text {
+  color: var(--color-primary);
+}
+
+/* Chevron Rotation */
+.faq-item__icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: all var(--transition-normal);
+}
+
+.faq-item--open .faq-item__icon-wrap {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.faq-item__icon {
+  transition: transform var(--transition-normal);
+}
+
+.faq-item--open .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   SMOOTH HEIGHT ANIMATION VIA CSS GRID
+   0fr -> 1fr grid transition (zero JavaScript height calculation needed)
+   ========================================================================== */
+.faq-item__collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item--open .faq-item__collapse {
+  grid-template-rows: 1fr;
+}
+
+.faq-item__content {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq-item__answer {
+  padding: 0 var(--space-6) var(--space-6) var(--space-6);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   FOOTER CONTACT LINK
+   ========================================================================== */
+.faq-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.faq-footer__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+}
+
+.faq-footer__icon {
+  color: var(--color-primary);
+}
+
+.faq-footer__link {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.faq-footer__link:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .faq-item__collapse {
+    transition: none !important;
+  }
+  .faq-item__icon {
+    transition: none !important;
+  }
+}
+

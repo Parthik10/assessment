@@ -1,0 +1,143 @@
+/**
+ * Xntrova Technologies - Design Tokens
+ * Clean, modern, accessible design tokens.
+ * Follows WCAG AA contrast standards.
+ */
+
+:root {
+  /* ==========================================================================
+     BRAND COLOR CONFIGURATION
+     👉 Paste your brand color hex code here!
+     ========================================================================== */
+  --color-primary: #0E62E4;             /* <-- [PASTE BRAND COLOR] Default: high-contrast royal blue */
+  --color-primary-hover: #0B4EB8;       /* 10% darker for interactive states */
+  --color-primary-active: #093D91;      /* 20% darker for active/click states */
+  --color-primary-light: rgba(14, 98, 228, 0.08); /* 8% tint for badges & chip backgrounds */
+  --color-primary-border: rgba(14, 98, 228, 0.22);/* Subtle tinted borders */
+  --color-primary-glow: rgba(14, 98, 228, 0.3);  /* Glow for charts & dashboard accents */
+
+  /* ==========================================================================
+     ACCENT & STATUS COLORS (Dashboard & Theme Touches)
+     ========================================================================== */
+  --color-success: #059669;             /* Positive growth indicators & metrics */
+  --color-success-light: #ECFDF5;
+  --color-warning: #D97706;             /* Sample / In-progress indicators */
+  --color-warning-light: #FFFBEB;
+  --color-danger: #DC2626;              /* Form validation errors */
+  --color-danger-light: #FEF2F2;
+
+  /* ==========================================================================
+     NEUTRAL GRAYS (Light Theme Hierarchy, WCAG AA Compliant)
+     ========================================================================== */
+  --color-bg-page: #FFFFFF;             /* Clean white base */
+  --color-bg-subtle: #F8FAFC;           /* Soft slate-50 section alternate background */
+  --color-bg-card: #FFFFFF;             /* Card surface */
+  --color-bg-card-hover: #FAFCFF;       /* Slight tint on card hover */
+  --color-bg-muted: #F1F5F9;            /* Slate-100 for chips & badges */
+
+  --color-border-subtle: #E2E8F0;       /* Slate-200 card and divider borders */
+  --color-border-hover: #CBD5E1;        /* Slate-300 card hover borders */
+
+  --color-text-main: #0F172A;           /* Slate-900 (15:1 contrast on white) */
+  --color-text-muted: #475569;          /* Slate-600 (5.8:1 contrast on white, WCAG AA pass) */
+  --color-text-subtle: #64748B;         /* Slate-500 (4.6:1 contrast on white, WCAG AA pass) */
+  --color-text-inverse: #FFFFFF;        /* Text on primary buttons/dark fills */
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     Max 2 Google Fonts: Geometric Sans (Headings) + Clean Sans (Body)
+     ========================================================================== */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Type scale */
+  --text-xs: 0.75rem;                   /* 12px */
+  --text-sm: 0.875rem;                  /* 14px */
+  --text-base: 1rem;                    /* 16px */
+  --text-lg: 1.125rem;                  /* 18px */
+  --text-xl: 1.25rem;                   /* 20px */
+  --text-2xl: 1.5rem;                   /* 24px */
+  --text-3xl: 1.875rem;                 /* 30px */
+  --text-4xl: 2.25rem;                  /* 36px */
+  --text-5xl: 3rem;                     /* 48px */
+  --text-hero: clamp(2.25rem, 5vw + 1rem, 3.75rem); /* Responsive hero headline */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.15;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.6;
+
+  /* ==========================================================================
+     SPACING SYSTEM (Consistent 4px/8px rhythm)
+     ========================================================================== */
+  --space-1: 0.25rem;                   /* 4px */
+  --space-2: 0.5rem;                    /* 8px */
+  --space-3: 0.75rem;                   /* 12px */
+  --space-4: 1rem;                      /* 16px */
+  --space-5: 1.25rem;                   /* 20px */
+  --space-6: 1.5rem;                    /* 24px */
+  --space-8: 2rem;                      /* 32px */
+  --space-10: 2.5rem;                   /* 40px */
+  --space-12: 3rem;                     /* 48px */
+  --space-16: 4rem;                     /* 64px */
+  --space-20: 5rem;                     /* 80px */
+  --space-24: 6rem;                     /* 96px */
+
+  /* Section Padding */
+  --section-padding-y: clamp(3.5rem, 6vw, 6rem);
+
+  /* ==========================================================================
+     CONTAINER & LAYOUT
+     ========================================================================== */
+  --container-max-width: 1240px;
+  --container-padding: 1.25rem;         /* 20px on mobile */
+
+  /* ==========================================================================
+     BORDER RADIUS (Rounded modern cards)
+     ========================================================================== */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ==========================================================================
+     ELEVATION & SOFT SHADOWS
+     ========================================================================== */
+  --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 16px 32px -8px rgba(15, 23, 42, 0.09), 0 4px 12px -2px rgba(14, 98, 228, 0.06);
+  --shadow-floating: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
+
+  /* ==========================================================================
+     TRANSITIONS & ACCESSIBLE FOCUS
+     ========================================================================== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --focus-ring: 2px solid var(--color-primary);
+  --focus-ring-offset: 3px;
+
+  /* ==========================================================================
+     Z-INDEX HIERARCHY
+     ========================================================================== */
+  --z-base: 1;
+  --z-progress-spine: 40;
+  --z-header: 50;
+  --z-skip-link: 100;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;          /* 32px on tablet and above */
+  }
+}
+

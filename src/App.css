@@ -1,0 +1,13 @@
+/* ==========================================================================
+   APP ROOT LAYOUT
+   ========================================================================== */
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-bg-page);
+  width: 100%;
+  overflow-x: hidden;
+}

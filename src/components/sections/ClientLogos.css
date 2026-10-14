@@ -1,0 +1,139 @@
+/* ==========================================================================
+   CLIENT LOGOS MARQUEE STYLES
+   Calm typography, pure CSS infinite loop, hover pause, reduced-motion wrap.
+   ========================================================================== */
+
+.client-logos-section {
+  padding-block: var(--space-8);
+  background-color: var(--color-bg-page);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.client-logos-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.client-logos-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.client-logos-subtitle {
+  font-size: 0.6875rem;
+  color: var(--color-text-subtle);
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   MARQUEE TRACK & MASK
+   ========================================================================== */
+.client-logos-marquee-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: var(--space-2);
+}
+
+/* Edge Gradient Fade Mask */
+.client-logos-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    var(--color-bg-page) 0%,
+    rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, 0) 90%,
+    var(--color-bg-page) 100%
+  );
+}
+
+.client-logos-track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: max-content;
+  animation: marqueeScroll 34s linear infinite;
+  will-change: transform;
+}
+
+/* Pause On Hover */
+.client-logos-marquee-wrap:hover .client-logos-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Wordmark Pill Style */
+.client-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.client-logo-pill:hover {
+  background-color: var(--color-bg-page);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-subtle);
+}
+
+.client-logo-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  letter-spacing: -0.01em;
+  transition: color var(--transition-fast);
+}
+
+.client-logo-pill:hover .client-logo-name {
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   PREFERS REDUCED MOTION (Static Wrapped Layout)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .client-logos-mask {
+    display: none;
+  }
+
+  .client-logos-track {
+    animation: none !important;
+    transform: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: var(--space-3);
+  }
+
+  .client-logo-pill:nth-child(n + 11) {
+    display: none; /* Hide duplicated marquee items under static wrap */
+  }
+}
+

@@ -1,0 +1,360 @@
+/* ==========================================================================
+   PROCESS SECTION STYLES ("02 — Engage")
+   Desktop horizontal timeline with scroll-triggered line fill;
+   Tablet/Mobile vertical stepper; interactive keyboard-driven tabpanel.
+   ========================================================================== */
+
+.process-section {
+  background-color: var(--color-bg-page);
+  position: relative;
+}
+
+/* ==========================================================================
+   TIMELINE WRAPPER & PROGRESS TRACK
+   ========================================================================== */
+.process-timeline-wrap {
+  position: relative;
+  margin-bottom: var(--space-8);
+}
+
+/* Horizontal Track on Desktop (1024px+) */
+.process-track-bg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .process-track-bg {
+    display: block;
+    position: absolute;
+    top: 26px; /* Centered through 52px circle node */
+    left: 8%;
+    right: 8%;
+    height: 3px;
+    background-color: var(--color-border-subtle);
+    border-radius: var(--radius-pill);
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .process-track-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #3B82F6 100%);
+    border-radius: var(--radius-pill);
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+
+  .process-track-fill--active {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   STEPS CONTAINER: VERTICAL (MOBILE) VS HORIZONTAL (DESKTOP)
+   ========================================================================== */
+.process-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+}
+
+/* Vertical timeline indicator on mobile/tablet */
+@media (max-width: 1023px) {
+  .process-steps-list::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 23px; /* Center of node */
+    width: 2px;
+    background-color: var(--color-border-subtle);
+    z-index: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-steps-list {
+    flex-direction: row;
+    gap: var(--space-6);
+    justify-content: space-between;
+  }
+}
+
+.process-step-item {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+/* Step Button Trigger */
+.process-step-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-normal);
+}
+
+@media (max-width: 1023px) {
+  .process-step-btn {
+    padding-left: 4.5rem; /* Space for the node on the left */
+    position: relative;
+  }
+}
+
+/* Hover & Focus State */
+.process-step-btn:hover {
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.process-step-btn:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-primary);
+}
+
+/* Selected Step */
+.process-step-item--selected .process-step-btn {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-card);
+  box-shadow: 0 8px 24px -4px rgba(14, 98, 228, 0.12);
+}
+
+/* Node Circle */
+.process-node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+@media (max-width: 1023px) {
+  .process-node {
+    position: absolute;
+    top: var(--space-6);
+    left: var(--space-4);
+  }
+}
+
+.process-node__num {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+/* Node active/selected appearance */
+.process-step-item--selected .process-node {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+.process-step-item--selected .process-node__num {
+  color: var(--color-text-inverse);
+}
+
+.process-step-btn:hover .process-node {
+  border-color: var(--color-primary);
+}
+
+/* Meta Content */
+.process-step-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.process-step-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-main);
+}
+
+.process-step-item--selected .process-step-title {
+  color: var(--color-primary);
+}
+
+.process-step-summary {
+  font-size: var(--text-xs);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+}
+
+/* Tags Row */
+.process-step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   DESKTOP EXPANDED DETAIL PANEL
+   ========================================================================== */
+.process-detail-panel {
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+}
+
+.process-detail__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.process-detail__title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.process-detail__step-pill {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.process-detail__heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-main);
+}
+
+.process-detail__timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.process-detail__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .process-detail__body {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+.process-detail__focus {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.process-detail__focus-icon {
+  color: var(--color-primary);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.process-detail__focus-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.process-detail__focus-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-main);
+  font-weight: var(--font-weight-medium);
+}
+
+.process-detail__deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.process-detail__deliv-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+}
+
+.process-detail__deliv-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.process-detail__deliv-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.process-detail__check {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .process-track-fill {
+    transition: none !important;
+    width: 100% !important;
+  }
+  .process-step-btn {
+    transition: none !important;
+  }
+  .process-step-btn:hover {
+    transform: none !important;
+  }
+}
+
